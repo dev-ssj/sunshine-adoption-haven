@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
-import Header from '@/components/Header';
-import HeroSection from '@/components/HeroSection';
-import AnimalCard from '@/components/AnimalCard';
+import AppHeader from '@/components/AppHeader';
+import AppHeroSection from '@/components/AppHeroSection';
+import AppAnimalCard from '@/components/AppAnimalCard';
 import LoginModal from '@/components/LoginModal';
 import Footer from '@/components/Footer';
 
@@ -98,30 +98,30 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header onLoginClick={() => setIsLoginModalOpen(true)} />
-      <HeroSection />
+    <div className="min-h-screen bg-gray-50">
+      <AppHeader onLoginClick={() => setIsLoginModalOpen(true)} />
+      <AppHeroSection />
       
-      <section className="py-16 px-4">
+      <section className="py-12 px-4 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">
               새로운 가족을 기다리는 아이들
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               각각의 동물들은 고유한 성격과 매력을 가지고 있습니다. 
               당신과 잘 맞는 반려동물을 찾아보세요.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
             {animals.map((animal) => (
-              <AnimalCard key={animal.id} animal={animal} />
+              <AppAnimalCard key={animal.id} animal={animal} />
             ))}
           </div>
           
-          <div className="text-center mt-12">
-            <button className="golden hover:bg-yellow-500 text-gray-800 font-medium px-8 py-3 rounded-lg transition-colors">
+          <div className="text-center">
+            <button className="golden hover:bg-yellow-500 text-gray-800 font-medium px-8 py-3 rounded-xl transition-all duration-200 hover:shadow-lg">
               더 많은 아이들 보기
             </button>
           </div>
