@@ -16,6 +16,7 @@ interface Animal {
   description: string;
   personality: string[];
   isUrgent: boolean;
+  imageUrl?: string;
 }
 
 interface AnimalCardProps {
@@ -25,6 +26,13 @@ interface AnimalCardProps {
 const AnimalCard = ({ animal }: AnimalCardProps) => {
   return (
     <Card className="h-full hover:shadow-lg transition-shadow duration-300 border border-gray-200 hover:border-yellow-300">
+      <div className="aspect-[4/3] overflow-hidden rounded-t-lg">
+        <img 
+          src={animal.imageUrl || 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=300&fit=crop'}
+          alt={animal.name}
+          className="w-full h-full object-cover"
+        />
+      </div>
       <CardContent className="p-6">
         <div className="flex justify-between items-start mb-4">
           <div>

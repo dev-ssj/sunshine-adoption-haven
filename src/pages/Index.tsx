@@ -8,7 +8,7 @@ import LoginModal from '@/components/LoginModal';
 const Index = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
-  // Mock data for abandoned animals
+  // Mock data for abandoned animals with images
   const animals = [
     {
       id: '1',
@@ -21,7 +21,8 @@ const Index = () => {
       rescueDate: '2024-06-15',
       description: '매우 온순하고 사람을 좋아하는 초코입니다. 산책을 무척 좋아하고 아이들과도 잘 지내요. 건강한 상태이며 모든 기본 예방접종을 완료했습니다.',
       personality: ['온순함', '사람좋아함', '산책매니아'],
-      isUrgent: false
+      isUrgent: false,
+      imageUrl: 'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=400&h=300&fit=crop'
     },
     {
       id: '2',
@@ -34,7 +35,8 @@ const Index = () => {
       rescueDate: '2024-06-20',
       description: '호기심이 많고 활발한 나비입니다. 다른 고양이들과도 잘 어울리며, 장난감을 가지고 노는 것을 좋아합니다. 중성화 수술을 완료했습니다.',
       personality: ['활발함', '호기심많음', '사교적'],
-      isUrgent: true
+      isUrgent: true,
+      imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=300&fit=crop'
     },
     {
       id: '3',
@@ -47,7 +49,8 @@ const Index = () => {
       rescueDate: '2024-05-30',
       description: '충성심이 강하고 주인을 잘 따르는 멍멍이입니다. 약간 수줍음이 많지만 시간이 지나면 친해집니다. 산책과 공놀이를 좋아합니다.',
       personality: ['충성스러움', '수줍음', '놀이좋아함'],
-      isUrgent: false
+      isUrgent: false,
+      imageUrl: 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=400&h=300&fit=crop'
     },
     {
       id: '4',
@@ -60,7 +63,8 @@ const Index = () => {
       rescueDate: '2024-06-01',
       description: '조용하고 차분한 성격의 까미입니다. 햇볕이 드는 곳에서 낮잠 자는 것을 좋아하고, 브러시질을 받는 것을 좋아합니다.',
       personality: ['차분함', '조용함', '독립적'],
-      isUrgent: false
+      isUrgent: false,
+      imageUrl: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=300&fit=crop'
     },
     {
       id: '5',
@@ -73,7 +77,8 @@ const Index = () => {
       rescueDate: '2024-06-25',
       description: '작고 귀여운 뽀삐입니다. 사람들의 관심을 받는 것을 좋아하고 매우 애교가 많습니다. 실내에서 키우기에 적합합니다.',
       personality: ['애교쟁이', '사교적', '작고귀여움'],
-      isUrgent: true
+      isUrgent: true,
+      imageUrl: 'https://images.unsplash.com/photo-1485833077593-4278bba3f11f?w=400&h=300&fit=crop'
     },
     {
       id: '6',
@@ -86,7 +91,8 @@ const Index = () => {
       rescueDate: '2024-06-28',
       description: '활발하고 장난기 많은 어린 고양이 호랑이입니다. 다른 동물들과도 잘 어울리며, 새로운 환경에 빠르게 적응합니다.',
       personality: ['활발함', '장난꾸러기', '적응력좋음'],
-      isUrgent: false
+      isUrgent: false,
+      imageUrl: 'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=400&h=300&fit=crop'
     }
   ];
 

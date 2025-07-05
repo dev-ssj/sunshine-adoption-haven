@@ -29,24 +29,24 @@ const HeroSection = () => {
             <div className="w-16 h-16 golden rounded-full flex items-center justify-center mx-auto mb-4">
               <Heart className="w-8 h-8 text-white" fill="white" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">1,200+</h3>
-            <p className="text-gray-600">새로운 가족을 찾은 아이들</p>
+            <h3 className="text-2xl font-bold text-gray-800 mb-2">2,500+</h3>
+            <p className="text-gray-600">총 보호동물</p>
           </div>
           
           <div className="text-center">
             <div className="w-16 h-16 golden rounded-full flex items-center justify-center mx-auto mb-4">
               <Home className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">50+</h3>
-            <p className="text-gray-600">협력 보호소</p>
+            <h3 className="text-2xl font-bold text-gray-800 mb-2">1,200+</h3>
+            <p className="text-gray-600">새로운 가족을 찾은 아이들</p>
           </div>
           
           <div className="text-center">
             <div className="w-16 h-16 golden rounded-full flex items-center justify-center mx-auto mb-4">
               <Users className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-2">5,000+</h3>
-            <p className="text-gray-600">따뜻한 입양 가족들</p>
+            <h3 className="text-2xl font-bold text-gray-800 mb-2">50+</h3>
+            <p className="text-gray-600">협력 보호소</p>
           </div>
         </div>
         
