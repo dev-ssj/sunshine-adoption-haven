@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import AnimalCard from '@/components/AnimalCard';
 import LoginModal from '@/components/LoginModal';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -126,6 +127,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
+      <Footer />
       
       <LoginModal 
         isOpen={isLoginModalOpen} 
