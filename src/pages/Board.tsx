@@ -1,7 +1,6 @@
 
 import React from 'react';
 import AppHeader from '@/components/AppHeader';
-import BoardSearch from '@/components/board/BoardSearch';
 import BoardTabs from '@/components/board/BoardTabs';
 import BoardPagination from '@/components/board/BoardPagination';
 import { useBoardFilter } from '@/hooks/useBoardFilter';
@@ -34,15 +33,12 @@ const Board = () => {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-6">커뮤니티</h1>
           
-          <BoardSearch 
-            searchTerm={searchTerm}
-            onSearchChange={handleSearchChange}
-          />
-
           <BoardTabs
             activeTab={activeTab}
             onTabChange={handleTabChange}
             currentPosts={currentPosts}
+            searchTerm={searchTerm}
+            onSearchChange={handleSearchChange}
           />
         </div>
 
