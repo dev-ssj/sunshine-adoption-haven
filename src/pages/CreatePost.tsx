@@ -85,33 +85,10 @@ const CreatePost = () => {
 
         <Card>
           <CardHeader>
-            <CardTitle>게시글 정보</CardTitle>
+            <CardTitle>글 작성</CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* 게시글 구분 */}
-              <div className="space-y-3">
-                <Label className="text-base font-medium">게시글 구분</Label>
-                <RadioGroup
-                  value={category}
-                  onValueChange={(value) => setCategory(value as BoardCategory)}
-                  className="flex flex-col space-y-2"
-                >
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="adoption" id="adoption" />
-                    <Label htmlFor="adoption">입양 후기</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="sns" id="sns" />
-                    <Label htmlFor="sns">SNS 홍보</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="missing" id="missing" />
-                    <Label htmlFor="missing">실종/목격 제보</Label>
-                  </div>
-                </RadioGroup>
-              </div>
-
               {/* 제목 */}
               <div className="space-y-2">
                 <Label htmlFor="title" className="text-base font-medium">제목</Label>
