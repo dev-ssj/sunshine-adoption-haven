@@ -30,17 +30,13 @@ const Board = () => {
       <AppHeader onLoginClick={handleLoginClick} />
       
       <div className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-6">커뮤니티</h1>
-          
-          <BoardTabs
-            activeTab={activeTab}
-            onTabChange={handleTabChange}
-            currentPosts={currentPosts}
-            searchTerm={searchTerm}
-            onSearchChange={handleSearchChange}
-          />
-        </div>
+        <BoardTabs
+          activeTab={activeTab}
+          onTabChange={handleTabChange}
+          currentPosts={currentPosts}
+          searchTerm={searchTerm}
+          onSearchChange={handleSearchChange}
+        />
 
         <BoardPagination
           currentPage={currentPage}

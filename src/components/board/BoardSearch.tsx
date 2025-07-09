@@ -16,7 +16,7 @@ const BoardSearch = ({ searchTerm, onSearchChange }: BoardSearchProps) => {
         placeholder="게시글을 검색해보세요..."
         value={searchTerm}
         onChange={(e) => onSearchChange(e.target.value)}
-        className="pl-10 pr-4 py-2 w-full max-w-xs rounded-xl border-gray-200"
+        className="pl-10 pr-4 py-3 w-full rounded-xl border-gray-200 text-base"
       />
     </div>
   );

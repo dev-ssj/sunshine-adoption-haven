@@ -25,15 +25,10 @@ const BoardTabs = ({ activeTab, onTabChange, currentPosts, searchTerm, onSearchC
 
   return (
     <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
-      <div className="flex flex-col gap-4 mb-8">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <TabsList className="grid w-full max-w-md grid-cols-3">
-            <TabsTrigger value="adoption" className="text-sm">입양 후기</TabsTrigger>
-            <TabsTrigger value="sns" className="text-sm">SNS 홍보</TabsTrigger>
-            <TabsTrigger value="missing" className="text-sm">실종/목격 제보</TabsTrigger>
-          </TabsList>
-          
-          <div className="flex-shrink-0">
+      <div className="flex flex-col gap-6 mb-8">
+        {/* 검색창 - 중앙에 크게 */}
+        <div className="flex justify-center">
+          <div className="w-full max-w-md">
             <BoardSearch 
               searchTerm={searchTerm}
               onSearchChange={onSearchChange}
@@ -41,8 +36,15 @@ const BoardTabs = ({ activeTab, onTabChange, currentPosts, searchTerm, onSearchC
           </div>
         </div>
         
-        <div className="flex justify-end">
-          <Button onClick={handleCreatePost} className="gap-2">
+        {/* 카테고리 탭과 글작성 버튼 */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <TabsList className="grid w-full max-w-md grid-cols-3">
+            <TabsTrigger value="adoption" className="text-sm">입양 후기</TabsTrigger>
+            <TabsTrigger value="sns" className="text-sm">SNS 홍보</TabsTrigger>
+            <TabsTrigger value="missing" className="text-sm">실종/목격 제보</TabsTrigger>
+          </TabsList>
+          
+          <Button onClick={handleCreatePost} className="gap-2 flex-shrink-0">
             <Plus className="w-4 h-4" />
             글작성하기
           </Button>
