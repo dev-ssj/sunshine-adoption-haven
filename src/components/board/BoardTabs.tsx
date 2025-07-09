@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Post, BoardCategory } from '@/types/board';
 import BoardCard from '@/components/BoardCard';
+import MissingAnimalCard from '@/components/MissingAnimalCard';
 import BoardSearch from '@/components/board/BoardSearch';
 import { Plus } from 'lucide-react';
 
@@ -70,7 +71,7 @@ const BoardTabs = ({ activeTab, onTabChange, currentPosts, searchTerm, onSearchC
       <TabsContent value="missing" className="mt-0">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {currentPosts.map((post) => (
-            <BoardCard key={post.id} post={post} />
+            <MissingAnimalCard key={post.id} post={post} />
           ))}
         </div>
       </TabsContent>

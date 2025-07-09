@@ -8,6 +8,13 @@ export interface Post {
   date: string;
   category: string;
   views: number;
+  // 실종/목격 게시판 전용 필드
+  breed?: string;
+  gender?: string;
+  age?: string;
+  furColor?: string;
+  missingLocation?: string;
+  missingDate?: string;
 }
 
 export type BoardCategory = 'adoption' | 'sns' | 'missing' | 'all';

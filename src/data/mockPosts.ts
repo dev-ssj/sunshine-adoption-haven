@@ -30,7 +30,13 @@ export const mockPosts: Post[] = [
     author: '이수진',
     date: '2024-01-13',
     category: 'missing',
-    views: 156
+    views: 156,
+    breed: '골든리트리버',
+    gender: '수컷',
+    age: '3세',
+    furColor: '황금색',
+    missingLocation: '서울 강남구 역삼동',
+    missingDate: '2024-01-12'
   },
   {
     id: '4',
@@ -60,7 +66,13 @@ export const mockPosts: Post[] = [
     author: '정민우',
     date: '2024-01-10',  
     category: 'missing',
-    views: 98
+    views: 98,
+    breed: '페르시안',
+    gender: '암컷',
+    age: '2세',
+    furColor: '흰색',
+    missingLocation: '부산 해운대구',
+    missingDate: '2024-01-09'
   },
   {
     id: '7',
@@ -90,7 +102,13 @@ export const mockPosts: Post[] = [
     author: '서다은',
     date: '2024-01-07',
     category: 'missing',
-    views: 234
+    views: 234,
+    breed: '진돗개',
+    gender: '수컷',
+    age: '5세',
+    furColor: '검은색',
+    missingLocation: '대구 달서구 상인동',
+    missingDate: '2024-01-06'
   },
   {
     id: '10',
@@ -120,7 +138,13 @@ export const mockPosts: Post[] = [
     author: '박현수',
     date: '2024-01-04',
     category: 'missing',
-    views: 145
+    views: 145,
+    breed: '코리안숏헤어',
+    gender: '암컷',
+    age: '1세',
+    furColor: '삼색(검정/주황/흰색)',
+    missingLocation: '인천 연수구 송도동',
+    missingDate: '2024-01-03'
   },
   {
     id: '13',
@@ -150,7 +174,13 @@ export const mockPosts: Post[] = [
     author: '임지우',
     date: '2024-01-01',
     category: 'missing',
-    views: 167
+    views: 167,
+    breed: '래브라도 믹스',
+    gender: '수컷',
+    age: '4세',
+    furColor: '노란색',
+    missingLocation: '광주 북구',
+    missingDate: '2023-12-31'
   }
 ];
 
