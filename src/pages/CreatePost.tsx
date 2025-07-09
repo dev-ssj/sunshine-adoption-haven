@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import AppHeader from '@/components/AppHeader';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,7 +13,15 @@ import { toast } from '@/hooks/use-toast';
 
 const CreatePost = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [category, setCategory] = useState<BoardCategory>('adoption');
+
+  useEffect(() => {
+    const stateCategory = location.state?.category;
+    if (stateCategory && ['adoption', 'sns', 'missing'].includes(stateCategory)) {
+      setCategory(stateCategory);
+    }
+  }, [location.state]);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [images, setImages] = useState<File[]>([]);
