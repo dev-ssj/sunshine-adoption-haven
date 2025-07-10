@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AppHeader from '@/components/AppHeader';
+import LoginModal from '@/components/LoginModal';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,6 +15,7 @@ import { toast } from '@/hooks/use-toast';
 const CreatePost = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [category, setCategory] = useState<BoardCategory>('adoption');
 
   useEffect(() => {
@@ -27,7 +29,7 @@ const CreatePost = () => {
   const [images, setImages] = useState<File[]>([]);
 
   const handleLoginClick = () => {
-    // 로그인 모달 열기 로직
+    setIsLoginModalOpen(true);
   };
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -197,6 +199,11 @@ const CreatePost = () => {
           </CardContent>
         </Card>
       </div>
+      
+      <LoginModal 
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
     </div>
   );
 };

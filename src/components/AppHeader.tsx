@@ -20,7 +20,7 @@ const AppHeader = ({ onLoginClick }: AppHeaderProps) => {
               <Heart className="w-5 h-5 text-white" fill="white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-800">PawHeart</h1>
+              <h1 className="text-xl font-bold text-gray-800">함께하개냥</h1>
             </div>
           </Link>
           
@@ -29,7 +29,7 @@ const AppHeader = ({ onLoginClick }: AppHeaderProps) => {
             <Link to="/" className="text-gray-600 hover:text-gray-800 transition-colors text-sm font-medium">입양하기</Link>
             <a href="#" className="text-gray-600 hover:text-gray-800 transition-colors text-sm font-medium">보호소</a>
             <Link to="/board" className="text-gray-600 hover:text-gray-800 transition-colors text-sm font-medium">커뮤니티</Link>
-            <a href="#" className="text-gray-600 hover:text-gray-800 transition-colors text-sm font-medium">도움말</a>
+            
           </nav>
           
           <div className="flex items-center space-x-2">
@@ -61,7 +61,7 @@ const AppHeader = ({ onLoginClick }: AppHeaderProps) => {
               <Link to="/" className="text-gray-600 hover:text-gray-800 transition-colors py-2 text-sm font-medium">입양하기</Link>
               <a href="#" className="text-gray-600 hover:text-gray-800 transition-colors py-2 text-sm font-medium">보호소 찾기</a>
               <Link to="/board" className="text-gray-600 hover:text-gray-800 transition-colors py-2 text-sm font-medium">커뮤니티</Link>
-              <a href="#" className="text-gray-600 hover:text-gray-800 transition-colors py-2 text-sm font-medium">도움말</a>
+              
             </div>
           </nav>
         )}

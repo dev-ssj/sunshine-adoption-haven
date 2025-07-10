@@ -1,12 +1,15 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import AppHeader from '@/components/AppHeader';
 import BoardTabs from '@/components/board/BoardTabs';
 import BoardPagination from '@/components/board/BoardPagination';
+import LoginModal from '@/components/LoginModal';
 import { useBoardFilter } from '@/hooks/useBoardFilter';
 import { allPosts } from '@/data/mockPosts';
 
 const Board = () => {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  
   const {
     activeTab,
     searchTerm,
@@ -22,7 +25,7 @@ const Board = () => {
   });
 
   const handleLoginClick = () => {
-    // 로그인 모달 열기 로직
+    setIsLoginModalOpen(true);
   };
 
   return (
@@ -44,6 +47,11 @@ const Board = () => {
           onPageChange={setCurrentPage}
         />
       </div>
+      
+      <LoginModal 
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
     </div>
   );
 };

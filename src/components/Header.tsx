@@ -17,7 +17,7 @@ const Header = ({ onLoginClick }: HeaderProps) => {
               <Heart className="w-6 h-6 text-white" fill="white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-800">PawHeart</h1>
+              <h1 className="text-2xl font-bold text-gray-800">함께하개냥</h1>
               <p className="text-sm text-gray-600">유기동물 입양 플랫폼</p>
             </div>
           </div>
@@ -26,7 +26,7 @@ const Header = ({ onLoginClick }: HeaderProps) => {
             <a href="#" className="text-gray-600 hover:text-gray-800 transition-colors">입양하기</a>
             <a href="#" className="text-gray-600 hover:text-gray-800 transition-colors">보호소 찾기</a>
             <a href="#" className="text-gray-600 hover:text-gray-800 transition-colors">입양 후기</a>
-            <a href="#" className="text-gray-600 hover:text-gray-800 transition-colors">도움말</a>
+            
           </nav>
           
           <Button 
