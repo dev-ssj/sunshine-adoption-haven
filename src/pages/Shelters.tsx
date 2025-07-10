@@ -24,8 +24,8 @@ const Shelters = () => {
   const filteredShelters = shelters.filter(shelter => {
     const matchesSearch = shelter.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          shelter.address.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesProvince = !selectedProvince || shelter.province === selectedProvince;
-    const matchesCity = !selectedCity || shelter.city === selectedCity;
+    const matchesProvince = !selectedProvince || selectedProvince === 'all' || shelter.province === selectedProvince;
+    const matchesCity = !selectedCity || selectedCity === 'all' || shelter.city === selectedCity;
     
     return matchesSearch && matchesProvince && matchesCity;
   });
@@ -73,7 +73,7 @@ const Shelters = () => {
                     <SelectValue placeholder="시/도 선택" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">전체 지역</SelectItem>
+                    <SelectItem value="all">전체 지역</SelectItem>
                     {provinces.map((province) => (
                       <SelectItem key={province.code} value={province.code}>
                         {province.name}
@@ -91,7 +91,7 @@ const Shelters = () => {
                       <SelectValue placeholder="시/군/구 선택" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">전체</SelectItem>
+                      <SelectItem value="all">전체</SelectItem>
                       {filteredCities.map((city) => (
                         <SelectItem key={city.code} value={city.code}>
                           {city.name}
