@@ -60,10 +60,6 @@ const ShelterDetail = () => {
               {/* 보호소 정보 */}
               <div className="grid grid-cols-1 gap-4">
                 <div>
-                  <p className="text-2xl font-bold text-gray-900">{shelter.name}</p>
-                </div>
-                
-                <div>
                   <p className="text-sm text-gray-600">
                     {provinces.find(p => p.code === shelter.province)?.name} {cities.find(c => c.code === shelter.city)?.name}
                   </p>
