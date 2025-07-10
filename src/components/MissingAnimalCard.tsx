@@ -52,9 +52,15 @@ const MissingAnimalCard = ({ post }: MissingAnimalCardProps) => {
         </div>
         
         {/* 세 번째 줄: 실종일 */}
-        <div className="flex items-center space-x-1 text-sm text-gray-500">
+        <div className="flex items-center space-x-1 text-sm text-gray-500 mb-2">
           <Calendar className="w-3 h-3" />
           <span>실종일: {post.missingDate}</span>
+        </div>
+        
+        {/* 네 번째 줄: 작성자 */}
+        <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+          <span className="text-xs text-gray-600">작성자: <span className="font-medium text-gray-800">{post.author}</span></span>
+          <span className="text-xs text-gray-400">{post.date}</span>
         </div>
       </CardContent>
     </Card>
