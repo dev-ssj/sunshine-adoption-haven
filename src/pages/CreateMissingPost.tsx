@@ -27,6 +27,7 @@ const missingPostSchema = z.object({
   district: z.string().min(1, "시/군/구를 선택해주세요"),
   specificLocation: z.string().min(1, "구체적인 장소를 입력해주세요"),
   contact: z.string().min(1, "연락처를 입력해주세요"),
+  species: z.string().min(1, "축종을 선택해주세요"),
   breed: z.string().min(1, "품종을 선택해주세요"),
   gender: z.enum(['unknown', 'male', 'female'], { required_error: "성별을 선택해주세요" }),
   age: z.string().min(1, "나이를 선택해주세요"),
@@ -49,6 +50,12 @@ const districts: Record<string, string[]> = {
   // 다른 지역들도 필요시 추가 가능
 };
 
+const breeds: Record<string, string[]> = {
+  "dog": ["골든 리트리버", "리브라도 리트리버", "비숑 프리제", "푸들", "말티즈", "포메라니안", "치와와", "요크셔 테리어", "시바견", "진돗개", "삽살개", "닥스훈트", "비글", "보더 콜리", "허스키", "마라뮤트", "셰퍼드", "불독", "로트와일러", "그레이하운드", "잭 러셀 테리어", "코커 스패니얼", "기타"],
+  "cat": ["코리안 숏헤어", "페르시안", "러시안 블루", "브리티시 숏헤어", "메인쿤", "아메리칸 숏헤어", "스코티시 폴드", "먼치킨", "벵갈", "샴", "래그돌", "노르웨이 숲", "터키시 앙고라", "아비시니안", "버미즈", "기타"],
+  "other": ["토끼", "햄스터", "기니피그", "페럿", "앵무새", "카나리아", "거북이", "이구아나", "기타"]
+};
+
 const CreateMissingPost = () => {
   const navigate = useNavigate();
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -63,6 +70,7 @@ const CreateMissingPost = () => {
   });
 
   const selectedCity = form.watch('city');
+  const selectedSpecies = form.watch('species');
 
   const handleLoginClick = () => {
     setIsLoginModalOpen(true);
@@ -264,6 +272,33 @@ const CreateMissingPost = () => {
 
                 {/* 동물 정보 */}
                 <div className="space-y-4">
+                  {/* 축종 */}
+                  <FormField
+                    control={form.control}
+                    name="species"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>축종</FormLabel>
+                        <Select onValueChange={(value) => {
+                          field.onChange(value);
+                          form.setValue('breed', ''); // 축종 변경 시 품종 초기화
+                        }} value={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="축종 선택" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="dog">개</SelectItem>
+                            <SelectItem value="cat">고양이</SelectItem>
+                            <SelectItem value="other">기타</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
                   {/* 품종 */}
                   <FormField
                     control={form.control}
@@ -271,16 +306,16 @@ const CreateMissingPost = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>품종</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value}>
+                        <Select onValueChange={field.onChange} value={field.value} disabled={!selectedSpecies}>
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue placeholder="품종 선택" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="dog">개</SelectItem>
-                            <SelectItem value="cat">고양이</SelectItem>
-                            <SelectItem value="other">기타</SelectItem>
+                            {selectedSpecies && breeds[selectedSpecies]?.map((breed) => (
+                              <SelectItem key={breed} value={breed}>{breed}</SelectItem>
+                            ))}
                           </SelectContent>
                         </Select>
                         <FormMessage />
