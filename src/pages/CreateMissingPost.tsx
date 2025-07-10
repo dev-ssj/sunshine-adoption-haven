@@ -272,56 +272,57 @@ const CreateMissingPost = () => {
 
                 {/* 동물 정보 */}
                 <div className="space-y-4">
-                  {/* 축종 */}
-                  <FormField
-                    control={form.control}
-                    name="species"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>축종</FormLabel>
-                        <Select onValueChange={(value) => {
-                          field.onChange(value);
-                          form.setValue('breed', ''); // 축종 변경 시 품종 초기화
-                        }} value={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="축종 선택" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="dog">개</SelectItem>
-                            <SelectItem value="cat">고양이</SelectItem>
-                            <SelectItem value="other">기타</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  {/* 축종과 품종 */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="species"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>축종</FormLabel>
+                          <Select onValueChange={(value) => {
+                            field.onChange(value);
+                            form.setValue('breed', ''); // 축종 변경 시 품종 초기화
+                          }} value={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="축종 선택" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="dog">개</SelectItem>
+                              <SelectItem value="cat">고양이</SelectItem>
+                              <SelectItem value="other">기타</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                  {/* 품종 */}
-                  <FormField
-                    control={form.control}
-                    name="breed"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>품종</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value} disabled={!selectedSpecies}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="품종 선택" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            {selectedSpecies && breeds[selectedSpecies]?.map((breed) => (
-                              <SelectItem key={breed} value={breed}>{breed}</SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                    <FormField
+                      control={form.control}
+                      name="breed"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>품종</FormLabel>
+                          <Select onValueChange={field.onChange} value={field.value} disabled={!selectedSpecies}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="품종 선택" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              {selectedSpecies && breeds[selectedSpecies]?.map((breed) => (
+                                <SelectItem key={breed} value={breed}>{breed}</SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
 
                   {/* 성별과 나이 */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
