@@ -49,7 +49,7 @@ const ShelterDetail = () => {
           <Card className="shadow-sm">
             <CardHeader className="relative py-4">
               <Link to="/shelters" className="absolute left-4 top-4">
-                <ArrowLeft className="w-6 h-6 text-primary hover:text-primary/80 transition-colors" />
+                <ArrowLeft className="w-8 h-8 text-primary hover:text-primary/80 transition-colors" />
               </Link>
               <CardTitle className="text-3xl font-bold text-gray-800 text-center pt-2">
                 {shelter.name}
