@@ -115,19 +115,25 @@ const CreatePost = () => {
                 />
               </div>
 
-              {/* 이미지 업로드 */}
+              {/* 이미지 업로드 - 개선된 디자인 */}
               <div className="space-y-4">
                 <Label className="text-base font-medium">이미지 첨부 (최대 5개)</Label>
                 
-                {/* 업로드 버튼 */}
-                <div className="flex items-center gap-4">
-                  <label
-                    htmlFor="image-upload"
-                    className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 cursor-pointer transition-colors"
-                  >
-                    <Upload className="w-4 h-4" />
-                    이미지 선택
-                  </label>
+                <div className="space-y-4">
+                  {/* 업로드 버튼 */}
+                  {images.length < 5 && (
+                    <label
+                      htmlFor="image-upload"
+                      className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors"
+                    >
+                      <Upload className="w-8 h-8 text-gray-400 mb-2" />
+                      <span className="text-sm font-medium text-gray-600">이미지 선택하기</span>
+                      <span className="text-xs text-gray-500 mt-1">
+                        {images.length}/5개 선택됨
+                      </span>
+                    </label>
+                  )}
+                  
                   <input
                     id="image-upload"
                     type="file"
@@ -137,48 +143,31 @@ const CreatePost = () => {
                     className="hidden"
                     disabled={images.length >= 5}
                   />
-                  <span className="text-sm text-gray-500">
-                    {images.length}/5개 선택됨
-                  </span>
-                </div>
 
-                {/* 선택된 이미지 미리보기 */}
-                {images.length > 0 && (
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                    {images.map((image, index) => (
-                      <div key={index} className="relative group">
-                        <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden border-2 border-dashed border-gray-300">
-                          <img
-                            src={URL.createObjectURL(image)}
-                            alt={`Preview ${index + 1}`}
-                            className="w-full h-full object-cover"
-                          />
+                  {/* 선택된 이미지들 */}
+                  {images.length > 0 && (
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                      {images.map((image, index) => (
+                        <div key={index} className="relative group">
+                          <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden border">
+                            <img
+                              src={URL.createObjectURL(image)}
+                              alt={`Preview ${index + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => removeImage(index)}
+                            className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors"
+                          >
+                            <X className="w-3 h-3" />
+                          </button>
                         </div>
-                        <button
-                          type="button"
-                          onClick={() => removeImage(index)}
-                          className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors"
-                        >
-                          <X className="w-3 h-3" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* 빈 슬롯 표시 */}
-                {images.length < 5 && (
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                    {Array.from({ length: 5 - images.length }).map((_, index) => (
-                      <div
-                        key={index}
-                        className="aspect-square bg-gray-50 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center"
-                      >
-                        <Image className="w-8 h-8 text-gray-400" />
-                      </div>
-                    ))}
-                  </div>
-                )}
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* 버튼 */}

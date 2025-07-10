@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Board from "./pages/Board";
 import CreatePost from "./pages/CreatePost";
+import CreateMissingPost from "./pages/CreateMissingPost";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/board" element={<Board />} />
           <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/create-missing-post" element={<CreateMissingPost />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
