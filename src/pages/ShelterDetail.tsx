@@ -44,21 +44,14 @@ const ShelterDetail = () => {
       />
       
       <div className="container mx-auto px-4 py-8">
-        {/* 뒤로가기 버튼 */}
-        <div className="mb-6">
-          <Link to="/shelters">
-            <Button variant="ghost" className="flex items-center space-x-2">
-              <ArrowLeft className="w-4 h-4" />
-              <span>보호소 목록으로</span>
-            </Button>
-          </Link>
-        </div>
-
         {/* 보호소 상세 정보 */}
         <div className="max-w-4xl mx-auto">
           <Card className="shadow-sm">
-            <CardHeader className="text-center pb-6">
-              <CardTitle className="text-3xl font-bold text-gray-800">
+            <CardHeader className="relative pb-6">
+              <Link to="/shelters" className="absolute left-0 top-1/2 transform -translate-y-1/2">
+                <ArrowLeft className="w-6 h-6 text-primary hover:text-primary/80 transition-colors" />
+              </Link>
+              <CardTitle className="text-3xl font-bold text-gray-800 text-center">
                 {shelter.name}
               </CardTitle>
             </CardHeader>
