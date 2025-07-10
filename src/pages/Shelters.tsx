@@ -22,8 +22,7 @@ const Shelters = () => {
 
   // 보호소 필터링
   const filteredShelters = shelters.filter(shelter => {
-    const matchesSearch = shelter.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         shelter.address.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = shelter.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesProvince = !selectedProvince || selectedProvince === 'all' || shelter.province === selectedProvince;
     const matchesCity = !selectedCity || selectedCity === 'all' || shelter.city === selectedCity;
     
@@ -57,7 +56,7 @@ const Shelters = () => {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <Input
-                placeholder="보호소 이름이나 주소로 검색해보세요..."
+                placeholder="보호소 이름으로 검색해보세요..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10 pr-4 py-3 w-full rounded-xl border-gray-200 text-base"
