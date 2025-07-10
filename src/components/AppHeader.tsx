@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Heart, Menu, X, ChevronDown, Bell, User, MessageSquare, LogOut } from 'lucide-react';
@@ -46,7 +45,7 @@ const AppHeader = ({ onLoginClick, isLoggedIn = false, userName = "사용자", o
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2 space-x-6">
             <Link to="/" className="text-gray-600 hover:text-gray-800 transition-colors text-sm font-medium">입양하기</Link>
-            <a href="#" className="text-gray-600 hover:text-gray-800 transition-colors text-sm font-medium">보호소</a>
+            <Link to="/shelters" className="text-gray-600 hover:text-gray-800 transition-colors text-sm font-medium">보호소</Link>
             <Link to="/board" className="text-gray-600 hover:text-gray-800 transition-colors text-sm font-medium">커뮤니티</Link>
           </nav>
           
@@ -129,9 +128,8 @@ const AppHeader = ({ onLoginClick, isLoggedIn = false, userName = "사용자", o
           <nav className="md:hidden mt-4 pb-4 border-t">
             <div className="flex flex-col space-y-2 pt-4">
               <Link to="/" className="text-gray-600 hover:text-gray-800 transition-colors py-2 text-sm font-medium">입양하기</Link>
-              <a href="#" className="text-gray-600 hover:text-gray-800 transition-colors py-2 text-sm font-medium">보호소 찾기</a>
+              <Link to="/shelters" className="text-gray-600 hover:text-gray-800 transition-colors py-2 text-sm font-medium">보호소 찾기</Link>
               <Link to="/board" className="text-gray-600 hover:text-gray-800 transition-colors py-2 text-sm font-medium">커뮤니티</Link>
-              
             </div>
           </nav>
         )}

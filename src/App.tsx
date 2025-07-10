@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import Board from "./pages/Board";
 import CreatePost from "./pages/CreatePost";
 import CreateMissingPost from "./pages/CreateMissingPost";
+import Shelters from "./pages/Shelters";
+import ShelterDetail from "./pages/ShelterDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +25,8 @@ const App = () => (
           <Route path="/board" element={<Board />} />
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/create-missing-post" element={<CreateMissingPost />} />
+          <Route path="/shelters" element={<Shelters />} />
+          <Route path="/shelter/:id" element={<ShelterDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
