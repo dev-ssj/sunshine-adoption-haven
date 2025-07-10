@@ -44,7 +44,7 @@ const AppHeader = ({ onLoginClick, isLoggedIn = false, userName = "사용자", o
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center justify-center flex-1 space-x-6">
+          <nav className="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2 space-x-6">
             <Link to="/" className="text-gray-600 hover:text-gray-800 transition-colors text-sm font-medium">입양하기</Link>
             <a href="#" className="text-gray-600 hover:text-gray-800 transition-colors text-sm font-medium">보호소</a>
             <Link to="/board" className="text-gray-600 hover:text-gray-800 transition-colors text-sm font-medium">커뮤니티</Link>
@@ -52,13 +52,13 @@ const AppHeader = ({ onLoginClick, isLoggedIn = false, userName = "사용자", o
           
           <div className="flex items-center space-x-2">
             {isLoggedIn ? (
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-2">
                 {/* 사용자 드롭다운 */}
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="flex items-center space-x-1 text-gray-700 hover:text-gray-900">
-                      <span className="text-sm font-medium">{userName}님</span>
-                      <ChevronDown className="w-4 h-4" />
+                    <Button variant="ghost" className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 px-2 py-1 h-auto">
+                      <span className="text-xs font-medium">{userName}님</span>
+                      <ChevronDown className="w-3 h-3" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-48">
@@ -76,11 +76,11 @@ const AppHeader = ({ onLoginClick, isLoggedIn = false, userName = "사용자", o
                 {/* 알림 드롭다운 */}
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 relative">
-                      <Bell className="w-4 h-4" />
-                      <span className="text-sm font-medium">알림</span>
-                      <ChevronDown className="w-4 h-4" />
-                      <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    <Button variant="ghost" className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 relative px-2 py-1 h-auto">
+                      <Bell className="w-3 h-3" />
+                      <span className="text-xs font-medium">알림</span>
+                      <ChevronDown className="w-3 h-3" />
+                      <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-80">
@@ -103,10 +103,10 @@ const AppHeader = ({ onLoginClick, isLoggedIn = false, userName = "사용자", o
                 <Button 
                   onClick={onLogout}
                   variant="ghost"
-                  className="flex items-center space-x-1 text-gray-700 hover:text-gray-900"
+                  className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 px-2 py-1 h-auto"
                 >
-                  <LogOut className="w-4 h-4" />
-                  <span className="text-sm font-medium">로그아웃</span>
+                  <LogOut className="w-3 h-3" />
+                  <span className="text-xs font-medium">로그아웃</span>
                 </Button>
               </div>
             ) : (
