@@ -47,11 +47,11 @@ const ShelterDetail = () => {
         {/* 보호소 상세 정보 */}
         <div className="max-w-4xl mx-auto">
           <Card className="shadow-sm">
-            <CardHeader className="relative pb-6">
-              <Link to="/shelters" className="absolute left-0 top-1/2 transform -translate-y-1/2">
+            <CardHeader className="relative py-4">
+              <Link to="/shelters" className="absolute left-4 top-4">
                 <ArrowLeft className="w-6 h-6 text-primary hover:text-primary/80 transition-colors" />
               </Link>
-              <CardTitle className="text-3xl font-bold text-gray-800 text-center">
+              <CardTitle className="text-3xl font-bold text-gray-800 text-center pt-2">
                 {shelter.name}
               </CardTitle>
             </CardHeader>
