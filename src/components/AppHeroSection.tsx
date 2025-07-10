@@ -15,13 +15,10 @@ const AppHeroSection = () => {
             유기동물들이 따뜻한 가정에서 새로운 삶을 시작할 수 있도록 도와주세요.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8">
+          <div className="flex justify-center mb-8">
             <Button className="golden hover:bg-yellow-500 text-gray-800 font-medium px-6 py-3">
               입양하기
               <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-            <Button variant="outline" className="border-yellow-400 text-gray-700 hover:bg-yellow-50 px-6 py-3">
-              후원하기
             </Button>
           </div>
         </div>

@@ -14,7 +14,7 @@ const Footer = () => {
                 <Heart className="w-6 h-6 text-white" fill="white" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold">PawHeart</h3>
+                <h3 className="text-2xl font-bold font-cute">함께하개냥</h3>
                 <p className="text-sm text-gray-300">유기동물 입양 플랫폼</p>
               </div>
             </div>
@@ -31,8 +31,8 @@ const Footer = () => {
               <li><a href="#" className="text-gray-300 hover:text-golden transition-colors">입양하기</a></li>
               <li><a href="#" className="text-gray-300 hover:text-golden transition-colors">보호소 찾기</a></li>
               <li><a href="#" className="text-gray-300 hover:text-golden transition-colors">입양 후기</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-golden transition-colors">후원하기</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-golden transition-colors">자원봉사</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-golden transition-colors">SNS 홍보</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-golden transition-colors">실종/목격 제보</a></li>
             </ul>
           </div>
 
@@ -59,7 +59,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 PawHeart. 모든 권리 보유.
+              © 2024 함께하개냥. 모든 권리 보유.
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-golden text-sm transition-colors">

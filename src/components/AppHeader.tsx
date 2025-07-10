@@ -20,16 +20,15 @@ const AppHeader = ({ onLoginClick }: AppHeaderProps) => {
               <Heart className="w-5 h-5 text-white" fill="white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-800">함께하개냥</h1>
+              <h1 className="text-xl font-bold text-gray-800 font-cute">함께하개냥</h1>
             </div>
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center justify-center flex-1 space-x-6">
             <Link to="/" className="text-gray-600 hover:text-gray-800 transition-colors text-sm font-medium">입양하기</Link>
             <a href="#" className="text-gray-600 hover:text-gray-800 transition-colors text-sm font-medium">보호소</a>
             <Link to="/board" className="text-gray-600 hover:text-gray-800 transition-colors text-sm font-medium">커뮤니티</Link>
-            
           </nav>
           
           <div className="flex items-center space-x-2">
