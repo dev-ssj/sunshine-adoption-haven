@@ -263,7 +263,8 @@ const CreateMissingPost = () => {
                 />
 
                 {/* 동물 정보 */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="space-y-4">
+                  {/* 품종 */}
                   <FormField
                     control={form.control}
                     name="breed"
@@ -287,60 +288,63 @@ const CreateMissingPost = () => {
                     )}
                   />
 
-                  <FormField
-                    control={form.control}
-                    name="gender"
-                    render={({ field }) => (
-                      <FormItem className="space-y-3">
-                        <FormLabel>성별</FormLabel>
-                        <FormControl>
-                          <RadioGroup
-                            onValueChange={field.onChange}
-                            defaultValue={field.value}
-                            className="flex flex-col space-y-1"
-                          >
-                            <div className="flex items-center space-x-2">
-                              <RadioGroupItem value="unknown" id="unknown" />
-                              <Label htmlFor="unknown">미확인</Label>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <RadioGroupItem value="male" id="male" />
-                              <Label htmlFor="male">수컷</Label>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <RadioGroupItem value="female" id="female" />
-                              <Label htmlFor="female">암컷</Label>
-                            </div>
-                          </RadioGroup>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
-                    name="age"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>나이</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value}>
+                  {/* 성별과 나이 */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="gender"
+                      render={({ field }) => (
+                        <FormItem className="space-y-3">
+                          <FormLabel>성별</FormLabel>
                           <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="나이 선택" />
-                            </SelectTrigger>
+                            <RadioGroup
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                              className="flex flex-row space-x-6"
+                            >
+                              <div className="flex items-center space-x-2">
+                                <RadioGroupItem value="unknown" id="unknown" />
+                                <Label htmlFor="unknown">미확인</Label>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <RadioGroupItem value="male" id="male" />
+                                <Label htmlFor="male">수컷</Label>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <RadioGroupItem value="female" id="female" />
+                                <Label htmlFor="female">암컷</Label>
+                              </div>
+                            </RadioGroup>
                           </FormControl>
-                          <SelectContent>
-                            <SelectItem value="unknown">나이 모름</SelectItem>
-                            {Array.from({length: 20}, (_, i) => i + 1).map((age) => (
-                              <SelectItem key={age} value={age.toString()}>{age}살</SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="age"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>나이</FormLabel>
+                          <Select onValueChange={field.onChange} value={field.value}>
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="나이 선택" />
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem value="unknown">나이 모름</SelectItem>
+                              {Array.from({length: 20}, (_, i) => i + 1).map((age) => (
+                                <SelectItem key={age} value={age.toString()}>{age}살</SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                 </div>
 
                 {/* 털색 */}
