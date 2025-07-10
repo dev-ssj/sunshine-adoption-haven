@@ -83,8 +83,8 @@ const Shelters = () => {
                 </Select>
               </div>
 
-              {/* 시/군/구 선택 - 시/도가 선택되었을 때만 표시 */}
-              {selectedProvince && (
+              {/* 시/군/구 선택 - 시/도가 선택되었고 'all'이 아닐 때만 표시 */}
+              {selectedProvince && selectedProvince !== 'all' && (
                 <div className="flex-1">
                   <Select value={selectedCity} onValueChange={setSelectedCity}>
                     <SelectTrigger className="w-full">

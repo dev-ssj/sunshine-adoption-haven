@@ -5,7 +5,7 @@ import AppHeader from '@/components/AppHeader';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft, MapPin, Phone } from 'lucide-react';
-import { shelters } from '@/data/shelterData';
+import { shelters, provinces, cities } from '@/data/shelterData';
 
 const ShelterDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -64,14 +64,6 @@ const ShelterDetail = () => {
             </CardHeader>
             
             <CardContent className="space-y-6">
-              {/* 소개 */}
-              <div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">소개</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {shelter.introduction}
-                </p>
-              </div>
-
               {/* 보호소 정보 */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -81,7 +73,9 @@ const ShelterDetail = () => {
                 
                 <div>
                   <h4 className="font-medium text-gray-700 mb-2">지역</h4>
-                  <p className="text-gray-900">{shelter.province} {shelter.city}</p>
+                  <p className="text-gray-900">
+                    {provinces.find(p => p.code === shelter.province)?.name} {cities.find(c => c.code === shelter.city)?.name}
+                  </p>
                 </div>
                 
                 <div className="md:col-span-2">
@@ -108,7 +102,7 @@ const ShelterDetail = () => {
 
               {/* 지도 섹션 */}
               <div>
-                <h4 className="font-medium text-gray-700 mb-4">위치</h4>
+                <h4 className="font-bold text-gray-800 mb-4">지도</h4>
                 <div className="bg-gray-100 rounded-lg h-64 flex items-center justify-center">
                   <div className="text-center text-gray-500">
                     <MapPin className="w-12 h-12 mx-auto mb-2" />
