@@ -65,20 +65,18 @@ const ShelterDetail = () => {
             
             <CardContent className="space-y-6">
               {/* 보호소 정보 */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-4">
                 <div>
-                  <h4 className="font-medium text-gray-700 mb-2">보호소명</h4>
-                  <p className="text-gray-900">{shelter.name}</p>
+                  <p className="text-2xl font-bold text-gray-900">{shelter.name}</p>
                 </div>
                 
                 <div>
-                  <h4 className="font-medium text-gray-700 mb-2">지역</h4>
-                  <p className="text-gray-900">
+                  <p className="text-sm text-gray-600">
                     {provinces.find(p => p.code === shelter.province)?.name} {cities.find(c => c.code === shelter.city)?.name}
                   </p>
                 </div>
                 
-                <div className="md:col-span-2">
+                <div>
                   <h4 className="font-medium text-gray-700 mb-2">주소</h4>
                   <div className="flex items-start space-x-2">
                     <MapPin className="w-5 h-5 text-gray-500 mt-0.5" />
