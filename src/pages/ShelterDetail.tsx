@@ -58,12 +58,7 @@ const ShelterDetail = () => {
             
             <CardContent className="space-y-6">
               {/* 보호소 정보 */}
-              <div className="grid grid-cols-1 gap-4">
-                <div>
-                  <p className="text-sm text-gray-600">
-                    {provinces.find(p => p.code === shelter.province)?.name} {cities.find(c => c.code === shelter.city)?.name}
-                  </p>
-                </div>
+              <div className="grid grid-cols-1 gap-6">
                 
                 <div>
                   <h4 className="font-medium text-gray-700 mb-2">주소</h4>

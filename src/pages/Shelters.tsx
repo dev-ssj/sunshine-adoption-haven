@@ -119,15 +119,14 @@ const Shelters = () => {
                   <div className="space-y-2">
                     <div className="flex items-center text-sm text-gray-600">
                       <MapPin className="w-4 h-4 mr-2" />
-                      <span>{shelter.address}</span>
+                      <span>
+                        {provinces.find(p => p.code === shelter.province)?.name} {cities.find(c => c.code === shelter.city)?.name}
+                      </span>
                     </div>
                     <div className="flex items-center text-sm text-gray-600">
                       <Phone className="w-4 h-4 mr-2" />
                       <span>{shelter.phone}</span>
                     </div>
-                    <p className="text-sm text-gray-500 line-clamp-2 mt-2">
-                      {shelter.introduction}
-                    </p>
                   </div>
                 </CardContent>
               </Card>
