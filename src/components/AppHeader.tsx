@@ -1,15 +1,34 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Heart, Menu, X } from 'lucide-react';
+import { Heart, Menu, X, ChevronDown, Bell, User, MessageSquare, LogOut } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Link } from 'react-router-dom';
 
 interface AppHeaderProps {
   onLoginClick: () => void;
+  isLoggedIn?: boolean;
+  userName?: string;
+  onLogout?: () => void;
 }
 
-const AppHeader = ({ onLoginClick }: AppHeaderProps) => {
+const AppHeader = ({ onLoginClick, isLoggedIn = false, userName = "사용자", onLogout }: AppHeaderProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // 더미 알림 데이터
+  const notifications = [
+    { id: 1, message: "새로운 입양 공고가 등록되었습니다.", time: "5분 전" },
+    { id: 2, message: "댓글이 달렸습니다.", time: "1시간 전" },
+    { id: 3, message: "좋아요를 받았습니다.", time: "2시간 전" },
+    { id: 4, message: "실종 신고가 접수되었습니다.", time: "3시간 전" },
+    { id: 5, message: "보호소에서 메시지를 보냈습니다.", time: "1일 전" },
+  ];
 
   return (
     <header className="bg-white/95 backdrop-blur-sm shadow-sm border-b sticky top-0 z-40">
@@ -32,12 +51,72 @@ const AppHeader = ({ onLoginClick }: AppHeaderProps) => {
           </nav>
           
           <div className="flex items-center space-x-2">
-            <Button 
-              onClick={onLoginClick}
-              className="golden hover:bg-yellow-500 text-gray-800 font-medium px-4 py-2 text-sm"
-            >
-              로그인
-            </Button>
+            {isLoggedIn ? (
+              <div className="flex items-center space-x-3">
+                {/* 사용자 드롭다운 */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="flex items-center space-x-1 text-gray-700 hover:text-gray-900">
+                      <span className="text-sm font-medium">{userName}님</span>
+                      <ChevronDown className="w-4 h-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-48">
+                    <DropdownMenuItem className="flex items-center space-x-2">
+                      <User className="w-4 h-4" />
+                      <span>마이페이지</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="flex items-center space-x-2">
+                      <MessageSquare className="w-4 h-4" />
+                      <span>채팅내역</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
+                {/* 알림 드롭다운 */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 relative">
+                      <Bell className="w-4 h-4" />
+                      <span className="text-sm font-medium">알림</span>
+                      <ChevronDown className="w-4 h-4" />
+                      <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-80">
+                    <div className="p-2">
+                      <p className="font-semibold text-sm mb-2">알림</p>
+                      {notifications.map((notification, index) => (
+                        <div key={notification.id}>
+                          <div className="p-2 hover:bg-gray-50 rounded cursor-pointer">
+                            <p className="text-sm text-gray-800">{notification.message}</p>
+                            <p className="text-xs text-gray-500 mt-1">{notification.time}</p>
+                          </div>
+                          {index < notifications.length - 1 && <div className="border-b border-gray-100 my-1" />}
+                        </div>
+                      ))}
+                    </div>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
+                {/* 로그아웃 버튼 */}
+                <Button 
+                  onClick={onLogout}
+                  variant="ghost"
+                  className="flex items-center space-x-1 text-gray-700 hover:text-gray-900"
+                >
+                  <LogOut className="w-4 h-4" />
+                  <span className="text-sm font-medium">로그아웃</span>
+                </Button>
+              </div>
+            ) : (
+              <Button 
+                onClick={onLoginClick}
+                className="golden hover:bg-yellow-500 text-gray-800 font-medium px-4 py-2 text-sm"
+              >
+                로그인
+              </Button>
+            )}
             
             {/* Mobile Menu Button */}
             <button
