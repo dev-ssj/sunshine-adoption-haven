@@ -20,7 +20,7 @@ import { provinces, cities, shelters } from '@/data/shelterData';
 
 const Shelters = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedProvince, setSelectedProvince] = useState('');
+  const [selectedProvince, setSelectedProvince] = useState('all');
   const [selectedCity, setSelectedCity] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -97,7 +97,7 @@ const Shelters = () => {
               <div className="flex-1">
                 <Select value={selectedProvince} onValueChange={handleProvinceChange}>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="시/도 선택" />
+                    <SelectValue placeholder="전체 지역" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="all">전체 지역</SelectItem>
