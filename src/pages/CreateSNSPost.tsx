@@ -15,7 +15,7 @@ const CreateSNSPost = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [instagramEmbedHtml, setInstagramEmbedHtml] = useState('');
+  const [instagramLink, setinstagramLink] = useState('');
   const [images, setImages] = useState<File[]>([]);
 
   const handleLoginClick = () => {
@@ -53,7 +53,7 @@ const CreateSNSPost = () => {
     const postData = {
       title,
       content,
-      instagramEmbedHtml, // HTML 그대로 저장
+      instagramLink, // HTML 그대로 저장
       images,
       category: 'sns',
     };
@@ -107,8 +107,8 @@ const CreateSNSPost = () => {
                 <Textarea
                   id="instagram-embed"
                   placeholder='<blockquote class="instagram-media" ...></blockquote><script async src="//www.instagram.com/embed.js"></script>'
-                  value={instagramEmbedHtml}
-                  onChange={(e) => setInstagramEmbedHtml(e.target.value)}
+                  value={instagramLink}
+                  onChange={(e) => setinstagramLink(e.target.value)}
                   className="text-base font-mono resize-y max-h-[160px] min-h-[100px]"
                 />
               </div>
