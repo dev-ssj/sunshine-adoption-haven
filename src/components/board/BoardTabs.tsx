@@ -20,9 +20,14 @@ interface BoardTabsProps {
 const BoardTabs = ({ activeTab, onTabChange, currentPosts, searchTerm, onSearchChange }: BoardTabsProps) => {
   const navigate = useNavigate();
 
-  const handleCreatePost = () => {
+const handleCreatePost = () => {
+  if (activeTab === 'sns') {
+    navigate('/create-sns-post');
+  } else {
     navigate('/create-post', { state: { category: activeTab } });
-  };
+  }
+};
+
 
   return (
     <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
