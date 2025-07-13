@@ -7,7 +7,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { allPosts } from '@/data/mockPosts';
 import AppHeader from '@/components/AppHeader';
 
-
 declare global {
   interface Window {
     instgrm?: {
@@ -25,22 +24,26 @@ const SNSPostDetail = () => {
   const post = allPosts.find(p => p.id === id && p.category === 'sns');
 
   // Instagram embed.js 동적 로딩
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://www.instagram.com/embed.js';
-    script.async = true;
-    document.body.appendChild(script);
+ useEffect(() => {
+  const script = document.createElement('script');
+  script.src = 'https://www.instagram.com/embed.js';
+  script.async = true;
+  document.body.appendChild(script);
 
-    script.onload = () => {
-      if (window.instgrm) {
-        window.instgrm.Embeds.process();
-      }
-    };
+  const checkAndRender = setInterval(() => {
+    const embedTarget = document.querySelector('.instagram-media');
+    if (window.instgrm && embedTarget) {
+      window.instgrm.Embeds.process();
+      clearInterval(checkAndRender);
+    }
+  }, 300);
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  return () => {
+    document.body.removeChild(script);
+    clearInterval(checkAndRender);
+  };
+}, []);
+
 
   if (!post) {
     return (
