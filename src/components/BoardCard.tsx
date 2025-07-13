@@ -40,8 +40,10 @@ const BoardCard = ({ post }: BoardCardProps) => {
         return '입양 후기';
       case 'sns':
         return 'SNS 홍보';
-      case 'missing':
-        return '실종/목격';
+      case 'MS':
+        return '실종';
+      case 'WT':
+        return '목격';
       default:
         return category;
     }
@@ -53,8 +55,10 @@ const BoardCard = ({ post }: BoardCardProps) => {
         return 'bg-green-100 text-green-800';
       case 'sns':
         return 'bg-blue-100 text-blue-800';
-      case 'missing':
+      case 'MS':
         return 'bg-red-100 text-red-800';
+      case 'WT':
+        return 'bg-orange-100 text-orange-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }

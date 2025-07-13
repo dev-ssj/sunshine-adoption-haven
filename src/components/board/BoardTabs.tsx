@@ -23,6 +23,8 @@ const BoardTabs = ({ activeTab, onTabChange, currentPosts, searchTerm, onSearchC
 const handleCreatePost = () => {
   if (activeTab === 'sns') {
     navigate('/create-sns-post');
+  } else if (activeTab === 'MS' || activeTab === 'WT') {
+    navigate('/create-missing-post');
   } else {
     navigate('/create-post', { state: { category: activeTab } });
   }
@@ -44,10 +46,11 @@ const handleCreatePost = () => {
         
         {/* 카테고리 탭과 글작성 버튼 */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <TabsList className="grid w-full max-w-md grid-cols-3">
+          <TabsList className="grid w-full max-w-2xl grid-cols-4">
             <TabsTrigger value="adoption" className="text-sm">입양 후기</TabsTrigger>
             <TabsTrigger value="sns" className="text-sm">SNS 홍보</TabsTrigger>
-            <TabsTrigger value="missing" className="text-sm">실종/목격 제보</TabsTrigger>
+            <TabsTrigger value="MS" className="text-sm">실종</TabsTrigger>
+            <TabsTrigger value="WT" className="text-sm">목격</TabsTrigger>
           </TabsList>
           
           <Button onClick={handleCreatePost} className="gap-2 flex-shrink-0">
@@ -73,7 +76,15 @@ const handleCreatePost = () => {
         </div>
       </TabsContent>
 
-      <TabsContent value="missing" className="mt-0">
+      <TabsContent value="MS" className="mt-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {currentPosts.map((post) => (
+            <MissingAnimalCard key={post.id} post={post} />
+          ))}
+        </div>
+      </TabsContent>
+
+      <TabsContent value="WT" className="mt-0">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {currentPosts.map((post) => (
             <MissingAnimalCard key={post.id} post={post} />

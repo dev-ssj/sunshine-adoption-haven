@@ -21,4 +21,4 @@ export interface Post {
   missingDate?: string;
 }
 
-export type BoardCategory = 'adoption' | 'sns' | 'missing' | 'all';
+export type BoardCategory = 'adoption' | 'sns' | 'MS' | 'WT' | 'all';
