@@ -16,6 +16,8 @@ interface Post {
   views: number;
   instagramLink?: string;
   images?: string[]; // 여러 이미지를 위한 배열
+  // 실종/목격 구분 필드
+  missingType?: 'MS' | 'WT';
 }
 
 interface BoardCardProps {
@@ -40,10 +42,9 @@ const BoardCard = ({ post }: BoardCardProps) => {
         return '입양 후기';
       case 'sns':
         return 'SNS 홍보';
-      case 'MS':
-        return '실종';
-      case 'WT':
-        return '목격';
+      case 'missing':
+        // missingType에 따라 실종/목격 구분
+        return post.missingType === 'MS' ? '실종' : post.missingType === 'WT' ? '목격' : '실종/목격';
       default:
         return category;
     }
@@ -55,10 +56,11 @@ const BoardCard = ({ post }: BoardCardProps) => {
         return 'bg-green-100 text-green-800';
       case 'sns':
         return 'bg-blue-100 text-blue-800';
-      case 'MS':
-        return 'bg-red-100 text-red-800';
-      case 'WT':
-        return 'bg-orange-100 text-orange-800';
+      case 'missing':
+        // missingType에 따라 색상 구분
+        return post.missingType === 'MS' ? 'bg-red-100 text-red-800' : 
+               post.missingType === 'WT' ? 'bg-orange-100 text-orange-800' : 
+               'bg-red-100 text-red-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }

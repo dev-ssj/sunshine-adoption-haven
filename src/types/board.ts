@@ -19,6 +19,8 @@ export interface Post {
   furColor?: string;
   missingLocation?: string;
   missingDate?: string;
+  // 실종/목격 구분 필드 (MS: 실종, WT: 목격)
+  missingType?: 'MS' | 'WT';
 }
 
-export type BoardCategory = 'adoption' | 'sns' | 'MS' | 'WT' | 'all';
+export type BoardCategory = 'adoption' | 'sns' | 'missing' | 'all';
