@@ -31,6 +31,7 @@ export const allPosts = [
     views: 234,
     breed: '골든 리트리버',
     gender: '수컷',
+    missingType : 'MS',
     age: '3세',
     furColor: '금색',
     missingLocation: '서울 강남구 역삼동',
@@ -70,6 +71,7 @@ export const allPosts = [
     gender: '암컷',
     age: '2세',
     furColor: '회색',
+     missingType : 'WT',
     missingLocation: '서울 마포구 홍대',
     missingDate: '2024-01-09'
   },
