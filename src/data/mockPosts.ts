@@ -81,6 +81,7 @@ export const allPosts = [
     author: '김미영',
     date: '2024-01-09',
     category: 'sns',
+    instagramLink: 'https://www.instagram.com/p/C-XdmZevIZL/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==/',
     views: 67
   },
   {
