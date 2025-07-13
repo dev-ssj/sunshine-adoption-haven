@@ -113,7 +113,7 @@ const CreateSNSPost = () => {
               {/* Instagram Embed URL */}
               <div className="space-y-2">
                 <Label htmlFor="instagram-url" className="text-base font-medium">
-                  Instagram 게시물 링크
+                  Instagram 퍼가기 -> Embed태그
                 </Label>
                 <Input
                   id="instagram-url"
