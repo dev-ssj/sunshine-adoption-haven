@@ -55,17 +55,6 @@ const SNSPostDetail = () => {
         </Button>
 
         <div className="bg-white rounded-2xl shadow-sm border-0 overflow-hidden">
-          {/* Instagram Embed 영역 */}
-          <div className="p-8 pb-6 flex justify-center bg-gray-50">
-            <div 
-              className="w-full max-w-lg"
-              dangerouslySetInnerHTML={{ 
-                __html: getInstagramEmbedHtml() 
-              }}
-            />
-            <script async src="//www.instagram.com/embed.js"></script>
-          </div>
-
           <div className="p-8">
             {/* 카테고리 배지 */}
             <div className="flex justify-start mb-4">
@@ -96,6 +85,17 @@ const SNSPostDetail = () => {
                 <Eye className="w-4 h-4" />
                 <span>{post.views}</span>
               </div>
+            </div>
+
+            {/* Instagram Embed 영역 */}
+            <div className="mb-8 flex justify-center">
+              <div 
+                className="w-full max-w-lg"
+                dangerouslySetInnerHTML={{ 
+                  __html: getInstagramEmbedHtml() 
+                }}
+              />
+              <script async src="//www.instagram.com/embed.js"></script>
             </div>
 
             {/* 첨부 이미지 영역 */}
