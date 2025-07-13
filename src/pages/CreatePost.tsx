@@ -60,7 +60,22 @@ const CreatePost = () => {
       return;
     }
 
-    // 게시글 저장 로직 (추후 백엔드 연동)
+    // 게시글 저장 로직 - 이미지 배열 처리
+    const imageUrls = images.map(image => URL.createObjectURL(image));
+    const newPost = {
+      id: Date.now().toString(),
+      title,
+      content,
+      imageUrl: imageUrls[0] || '', // 첫 번째 이미지를 대표 이미지로
+      images: imageUrls, // 모든 이미지를 배열로 저장
+      author: '사용자', // 실제로는 로그인된 사용자 정보
+      date: new Date().toISOString().split('T')[0],
+      category,
+      views: 0
+    };
+    
+    console.log('새 게시글:', newPost);
+
     toast({
       title: "게시글 작성 완료",
       description: "게시글이 성공적으로 작성되었습니다.",

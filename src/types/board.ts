@@ -8,6 +8,8 @@ export interface Post {
   date: string;
   category: string;
   views: number;
+  // 여러 이미지를 위한 배열 추가
+  images?: string[];
   // SNS 홍보 게시판 전용 필드
   instagramLink?: string;
   // 실종/목격 게시판 전용 필드
