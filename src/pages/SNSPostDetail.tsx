@@ -105,16 +105,15 @@ const SNSPostDetail = () => {
             </div>
 
             {/* Instagram Embed */}
-            {'instagramUrl' in post && post.instagramUrl && (
+            {post.instagramLink && (
               <div className="mb-8 flex justify-center">
                 <blockquote
                   className="instagram-media w-full max-w-lg"
-                  data-instgrm-permalink={post.instagramUrl}
+                  data-instgrm-permalink={post.instagramLink}
                   data-instgrm-version="14"
                 ></blockquote>
               </div>
             )}
-
             {/* 첨부 이미지 */}
             {images.length > 0 && (
               <div className="mb-8">
