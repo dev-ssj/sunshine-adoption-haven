@@ -7,14 +7,25 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { allPosts } from '@/data/mockPosts';
 import AppHeader from '@/components/AppHeader';
 
+// 🔒 TypeScript에게 window.instgrm을 알려줌
+declare global {
+  interface Window {
+    instgrm?: {
+      Embeds: {
+        process(): void;
+      };
+    };
+  }
+}
+
 const SNSPostDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
   const post = allPosts.find(p => p.id === id && p.category === 'sns');
 
+  // Instagram embed.js 동적 로딩
   useEffect(() => {
-    // Instagram embed 스크립트 로드 및 렌더링 처리
     const script = document.createElement('script');
     script.src = 'https://www.instagram.com/embed.js';
     script.async = true;
@@ -91,7 +102,7 @@ const SNSPostDetail = () => {
             </div>
 
             {/* Instagram Embed */}
-            {post.instagramUrl && (
+            {'instagramUrl' in post && post.instagramUrl && (
               <div className="mb-8 flex justify-center">
                 <blockquote
                   className="instagram-media w-full max-w-lg"
@@ -136,7 +147,6 @@ const SNSPostDetail = () => {
               </div>
             )}
 
-            {/* 본문 */}
             <div className="prose prose-lg max-w-none mb-8">
               <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
                 {post.content}
