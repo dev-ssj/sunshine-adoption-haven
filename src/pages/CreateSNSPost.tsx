@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AppHeader from '@/components/AppHeader';
@@ -16,7 +15,7 @@ const CreateSNSPost = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [instagramEmbedUrl, setInstagramEmbedUrl] = useState('');
+  const [instagramLink, setInstagramLink] = useState('');
   const [images, setImages] = useState<File[]>([]);
 
   const handleLoginClick = () => {
@@ -41,7 +40,6 @@ const CreateSNSPost = () => {
   };
 
   const getInstagramEmbedCode = (url: string) => {
-    // Instagram 게시물 URL을 embed 코드로 변환
     if (url.includes('instagram.com/p/')) {
       const postId = url.split('/p/')[1].split('/')[0];
       return `<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/${postId}/" data-instgrm-version="14"><a href="https://www.instagram.com/p/${postId}/" target="_blank">Instagram에서 이 게시물 보기</a></blockquote>`;
@@ -60,22 +58,21 @@ const CreateSNSPost = () => {
       return;
     }
 
-    // SNS 홍보 게시글 저장 로직 (추후 백엔드 연동)
     const postData = {
       title,
       content,
-      instagramEmbedUrl,
+      instagramLink,
       images,
-      category: 'sns'
+      category: 'sns',
     };
-    
+
     console.log('SNS 홍보 게시글 데이터:', postData);
-    
+
     toast({
       title: "SNS 홍보 게시글 작성 완료",
       description: "게시글이 성공적으로 작성되었습니다.",
     });
-    
+
     navigate('/board');
   };
 
@@ -110,29 +107,29 @@ const CreateSNSPost = () => {
                 />
               </div>
 
-              {/* Instagram Embed URL */}
+              {/* Instagram Embed Link */}
               <div className="space-y-2">
-                <Label htmlFor="instagram-url" className="text-base font-medium">
+                <Label htmlFor="instagram-link" className="text-base font-medium">
                   Instagram Embed태그 입력
                 </Label>
                 <Input
-                  id="instagram-url"
+                  id="instagram-link"
                   placeholder="https://www.instagram.com/p/..."
-                  value={instagramEmbedUrl}
-                  onChange={(e) => setInstagramEmbedUrl(e.target.value)}
+                  value={instagramLink}
+                  onChange={(e) => setInstagramLink(e.target.value)}
                   className="text-base"
                 />
               </div>
 
-              {/* Instagram 미리보기 */}
-              {instagramEmbedUrl && instagramEmbedUrl.includes('instagram.com/p/') && (
+              {/* Instagram Preview */}
+              {instagramLink && instagramLink.includes('instagram.com/p/') && (
                 <div className="space-y-2">
                   <Label className="text-base font-medium">Instagram 게시물 미리보기</Label>
                   <div className="border rounded-lg p-4 bg-gray-50">
                     <div 
                       className="max-w-md mx-auto"
                       dangerouslySetInnerHTML={{ 
-                        __html: getInstagramEmbedCode(instagramEmbedUrl) 
+                        __html: getInstagramEmbedCode(instagramLink) 
                       }}
                     />
                     <script async src="//www.instagram.com/embed.js"></script>
@@ -155,9 +152,7 @@ const CreateSNSPost = () => {
               {/* 이미지 업로드 */}
               <div className="space-y-4">
                 <Label className="text-base font-medium">추가 이미지 (최대 5개)</Label>
-                
                 <div className="space-y-4">
-                  {/* 업로드 버튼 */}
                   {images.length < 5 && (
                     <label
                       htmlFor="image-upload"
@@ -170,7 +165,7 @@ const CreateSNSPost = () => {
                       </span>
                     </label>
                   )}
-                  
+
                   <input
                     id="image-upload"
                     type="file"
@@ -181,7 +176,6 @@ const CreateSNSPost = () => {
                     disabled={images.length >= 5}
                   />
 
-                  {/* 선택된 이미지들 */}
                   {images.length > 0 && (
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                       {images.map((image, index) => (
@@ -225,7 +219,7 @@ const CreateSNSPost = () => {
           </CardContent>
         </Card>
       </div>
-      
+
       <LoginModal 
         isOpen={isLoginModalOpen}
         onClose={() => setIsLoginModalOpen(false)}
