@@ -122,9 +122,6 @@ const CreateSNSPost = () => {
                   onChange={(e) => setInstagramEmbedUrl(e.target.value)}
                   className="text-base"
                 />
-                <p className="text-xs text-gray-500">
-                  Instagram 게시물 URL을 입력하면 미리보기가 표시됩니다.
-                </p>
               </div>
 
               {/* Instagram 미리보기 */}
