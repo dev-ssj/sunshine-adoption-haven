@@ -7,7 +7,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { allPosts } from '@/data/mockPosts';
 import AppHeader from '@/components/AppHeader';
 
-// 🔒 TypeScript에게 window.instgrm을 알려줌
+
 declare global {
   interface Window {
     instgrm?: {
