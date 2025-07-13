@@ -45,7 +45,7 @@ export const allPosts = [
     date: '2024-01-12',
     category: 'sns',
     views: 78,
-    instagramEmbedUrl: 'https://www.instagram.com/p/DLXIzQ2z_mt/'
+    instagramLink: 'https://www.instagram.com/p/DLXIzQ2z_mt/'
   },
   {
     id: '5',
@@ -92,6 +92,6 @@ export const allPosts = [
     date: '2024-01-08',
     category: 'sns',
     views: 145,
-    instagramlink: 'https://www.instagram.com/p/DLXIzQ2z_mt/'
+    instagramLink: 'https://www.instagram.com/p/DLXIzQ2z_mt/'
   }
 ];
