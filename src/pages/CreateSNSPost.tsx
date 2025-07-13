@@ -15,7 +15,7 @@ const CreateSNSPost = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [instagramLink, setInstagramLink] = useState('');
+  const [instagramEmbedHtml, setInstagramEmbedHtml] = useState('');
   const [images, setImages] = useState<File[]>([]);
 
   const handleLoginClick = () => {
@@ -39,14 +39,6 @@ const CreateSNSPost = () => {
     setImages(prev => prev.filter((_, i) => i !== index));
   };
 
-  const getInstagramEmbedCode = (url: string) => {
-    if (url.includes('instagram.com/p/')) {
-      const postId = url.split('/p/')[1].split('/')[0];
-      return `<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/${postId}/" data-instgrm-version="14"><a href="https://www.instagram.com/p/${postId}/" target="_blank">Instagram에서 이 게시물 보기</a></blockquote>`;
-    }
-    return '';
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim() || !content.trim()) {
@@ -61,7 +53,7 @@ const CreateSNSPost = () => {
     const postData = {
       title,
       content,
-      instagramLink,
+      instagramEmbedHtml, // HTML 그대로 저장
       images,
       category: 'sns',
     };
@@ -107,35 +99,19 @@ const CreateSNSPost = () => {
                 />
               </div>
 
-              {/* Instagram Embed Link */}
+              {/* Instagram Embed HTML 입력 */}
               <div className="space-y-2">
-                <Label htmlFor="instagram-link" className="text-base font-medium">
-                  Instagram Embed태그 입력
+                <Label htmlFor="instagram-embed" className="text-base font-medium">
+                  Instagram Embed 태그 붙여넣기
                 </Label>
-                <Input
-                  id="instagram-link"
-                  placeholder="https://www.instagram.com/p/..."
-                  value={instagramLink}
-                  onChange={(e) => setInstagramLink(e.target.value)}
-                  className="text-base"
+                <Textarea
+                  id="instagram-embed"
+                  placeholder='<blockquote class="instagram-media" ...></blockquote><script async src="//www.instagram.com/embed.js"></script>'
+                  value={instagramEmbedHtml}
+                  onChange={(e) => setInstagramEmbedHtml(e.target.value)}
+                  className="text-base min-h-[160px] font-mono"
                 />
               </div>
-
-              {/* Instagram Preview */}
-              {instagramLink && instagramLink.includes('instagram.com/p/') && (
-                <div className="space-y-2">
-                  <Label className="text-base font-medium">Instagram 게시물 미리보기</Label>
-                  <div className="border rounded-lg p-4 bg-gray-50">
-                    <div 
-                      className="max-w-md mx-auto"
-                      dangerouslySetInnerHTML={{ 
-                        __html: getInstagramEmbedCode(instagramLink) 
-                      }}
-                    />
-                    <script async src="//www.instagram.com/embed.js"></script>
-                  </div>
-                </div>
-              )}
 
               {/* 본문 */}
               <div className="space-y-2">
