@@ -49,11 +49,15 @@ const CreateSNSPost = () => {
       });
       return;
     }
-
+ // instagramLink 정리
+  const normalizedInstagramLink = instagramLink.endsWith('/')
+    ? instagramLink
+    : instagramLink + '/';
+    
     const postData = {
       title,
       content,
-      instagramLink, // HTML 그대로 저장
+      instagramLink, 
       images,
       category: 'sns',
     };
