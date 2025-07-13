@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Eye, Calendar, User, Instagram } from 'lucide-react';
@@ -21,6 +22,17 @@ interface BoardCardProps {
 }
 
 const BoardCard = ({ post }: BoardCardProps) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    if (post.category === 'sns') {
+      navigate(`/sns-post/${post.id}`);
+    } else {
+      // 다른 카테고리의 경우 일반 상세 페이지로 이동 (추후 구현)
+      console.log('Navigate to general post detail:', post.id);
+    }
+  };
+
   const getCategoryLabel = (category: string) => {
     switch (category) {
       case 'adoption':
@@ -56,7 +68,10 @@ const BoardCard = ({ post }: BoardCardProps) => {
   };
 
   return (
-    <Card className="h-full hover:shadow-xl transition-all duration-300 border-0 bg-white rounded-2xl overflow-hidden hover:scale-[1.02] cursor-pointer">
+    <Card 
+      className="h-full hover:shadow-xl transition-all duration-300 border-0 bg-white rounded-2xl overflow-hidden hover:scale-[1.02] cursor-pointer"
+      onClick={handleCardClick}
+    >
       {/* SNS 홍보 게시물의 경우 Instagram embed 표시 */}
       {post.category === 'sns' && post.instagramEmbedUrl ? (
         <div className="aspect-[4/3] overflow-hidden bg-gray-50 flex items-center justify-center">
