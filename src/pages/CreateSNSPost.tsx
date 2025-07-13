@@ -102,11 +102,11 @@ const CreateSNSPost = () => {
               {/* Instagram Embed HTML 입력 */}
               <div className="space-y-2">
                 <Label htmlFor="instagram-embed" className="text-base font-medium">
-                  Instagram Embed 태그 
+                  Instagram link
                 </Label>
-                <Textarea
+                <Input
                   id="instagram-embed"
-                  placeholder='<blockquote class="instagram-media" ...></blockquote><script async src="//www.instagram.com/embed.js"></script>'
+                  placeholder='https://www.instagram.com/p/C-XdmZevIZL/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==/'
                   value={instagramLink}
                   onChange={(e) => setinstagramLink(e.target.value)}
                   className="text-base font-mono resize-y max-h-[160px] min-h-[100px]"
