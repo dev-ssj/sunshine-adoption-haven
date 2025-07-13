@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
@@ -14,7 +13,7 @@ interface Post {
   date: string;
   category: string;
   views: number;
-  instagramEmbedUrl?: string;
+  instagramLink?: string;
 }
 
 interface BoardCardProps {
@@ -78,8 +77,8 @@ const BoardCard = ({ post }: BoardCardProps) => {
     >
       <div className="aspect-[4/3] overflow-hidden">
         <img 
-          src={post.category === 'sns' && post.instagramEmbedUrl ? 
-            getInstagramThumbnail(post.instagramEmbedUrl) || post.imageUrl : 
+          src={post.category === 'sns' && post.instagramLink ? 
+            getInstagramThumbnail(post.instagramLink) || post.imageUrl : 
             post.imageUrl
           }
           alt={post.title}
