@@ -8,6 +8,8 @@ export interface Post {
   date: string;
   category: string;
   views: number;
+  // SNS 홍보 게시판 전용 필드
+  instagramEmbedUrl?: string;
   // 실종/목격 게시판 전용 필드
   breed?: string;
   gender?: string;
