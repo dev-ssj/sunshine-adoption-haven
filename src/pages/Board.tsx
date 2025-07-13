@@ -20,7 +20,7 @@ const Board = () => {
     handleSearchChange,
     setCurrentPage,
   } = useBoardFilter({
-    posts: allPosts,
+  posts: repeatedPosts,
     postsPerPage: 12,
   });
 
