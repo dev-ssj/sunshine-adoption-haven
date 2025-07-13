@@ -9,7 +9,7 @@ import { allPosts } from '@/data/mockPosts';
 
 const Board = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const repeatedPosts = Array(3).fill(allPosts).flat();
+  const repeatedPosts = Array(5).fill(allPosts).flat();
   const {
     activeTab,
     searchTerm,
