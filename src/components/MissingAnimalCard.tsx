@@ -16,7 +16,7 @@ const MissingAnimalCard = ({ post }: MissingAnimalCardProps) => {
 
   const getMissingTypeColor = () => {
     return post.missingType === 'MS' ? 'bg-red-100 text-red-800' : 
-           post.missingType === 'WT' ? 'bg-orange-100 text-orange-800' : 
+           post.missingType === 'WT' ? 'bg-blue-100 text-blue-800' : 
            'bg-red-100 text-red-800';
   };
 
