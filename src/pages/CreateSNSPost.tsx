@@ -102,14 +102,14 @@ const CreateSNSPost = () => {
               {/* Instagram Embed HTML 입력 */}
               <div className="space-y-2">
                 <Label htmlFor="instagram-embed" className="text-base font-medium">
-                  Instagram Embed 태그 붙여넣기
+                  Instagram Embed 태그 
                 </Label>
                 <Textarea
                   id="instagram-embed"
                   placeholder='<blockquote class="instagram-media" ...></blockquote><script async src="//www.instagram.com/embed.js"></script>'
                   value={instagramEmbedHtml}
                   onChange={(e) => setInstagramEmbedHtml(e.target.value)}
-                  className="text-base min-h-[160px] font-mono"
+                  className="text-base font-mono resize-y max-h-[160px] min-h-[100px]"
                 />
               </div>
 
