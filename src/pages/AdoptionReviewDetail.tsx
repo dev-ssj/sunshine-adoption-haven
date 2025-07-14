@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Heart, MessageCircle, Eye, User, Calendar, Edit, Trash2 } from 'lucide-react';
+import { ArrowLeft, Heart, MessageCircle, Eye, User, Calendar, Edit, Trash2, Reply } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { allPosts } from '@/data/mockPosts';
+import { allPosts, comments, adoptionAnimals } from '@/data/mockPosts';
 import AppHeader from '@/components/AppHeader';
+import AnimalCard from '@/components/AnimalCard';
 
 const AdoptionReviewDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [liked, setLiked] = useState(false);
 
   const post = allPosts.find(p => p.id === id && p.category === 'adoption');
+  const postComments = comments.filter(c => c.postId === id);
+  const adoptionAnimal = post?.adoptionPostId ? adoptionAnimals.find(a => a.id === post.adoptionPostId) : null;
 
   if (!post) {
     return (
@@ -26,12 +30,8 @@ const AdoptionReviewDetail = () => {
     );
   }
 
-  // 이미지 배열 생성 (최대 5장 시뮬레이션)
-  const images = (post as any).images || [
-    post.imageUrl,
-    'https://images.unsplash.com/photo-1582562124811-c09040d0a901?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-  ].filter(Boolean);
+  // 이미지 배열 생성 (5장)
+  const images = (post as any).images || [post.imageUrl].filter(Boolean);
 
   // 사용자 권한 확인 (현재는 mock 데이터)
   const hasEditPermission = true; // 실제로는 현재 사용자와 게시글 작성자 비교
@@ -99,7 +99,6 @@ const AdoptionReviewDetail = () => {
             {/* 이미지 섹션 */}
             {images.length > 0 && (
               <div className="mb-8 bg-gray-50 rounded-2xl p-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">입양 사진</h3>
                 {images.length === 1 ? (
                   <div className="rounded-xl overflow-hidden shadow-md">
                     <img
@@ -141,29 +140,115 @@ const AdoptionReviewDetail = () => {
 
             {/* 본문 내용 */}
             <div className="prose prose-lg max-w-none mb-8">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">입양 후기</h3>
               <p className="text-gray-700 leading-relaxed whitespace-pre-wrap text-base">
                 {post.content}
               </p>
             </div>
+
+            {/* 관련 입양 공고 */}
+            {adoptionAnimal && (
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">관련 입양 공고</h3>
+                <div className="max-w-md">
+                  <AnimalCard animal={adoptionAnimal} />
+                </div>
+              </div>
+            )}
           </div>
 
           {/* 하단 인터랙션 섹션 */}
           <div className="px-8 py-6 bg-gray-50 border-t border-gray-100">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <Button variant="ghost" size="sm" className="text-red-500 hover:text-red-600 hover:bg-red-50">
-                  <Heart className="w-5 h-5 mr-2" />
-                  좋아요
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className={`${liked ? 'text-red-500 bg-red-50' : 'text-red-500'} hover:text-red-600 hover:bg-red-50`}
+                  onClick={() => setLiked(!liked)}
+                >
+                  <Heart className={`w-5 h-5 mr-2 ${liked ? 'fill-current' : ''}`} />
+                  좋아요 {(post as any).likes + (liked ? 1 : 0)}
                 </Button>
                 <Button variant="ghost" size="sm" className="text-blue-500 hover:text-blue-600 hover:bg-blue-50">
                   <MessageCircle className="w-5 h-5 mr-2" />
-                  댓글
+                  댓글 {postComments.reduce((total, comment) => total + 1 + comment.replies.length, 0)}
                 </Button>
               </div>
               <div className="flex items-center space-x-2 text-sm text-gray-500">
                 <Eye className="w-4 h-4" />
                 <span>조회 {post.views}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* 댓글 섹션 */}
+          <div className="px-8 py-6 border-t border-gray-100">
+            <h3 className="text-lg font-semibold text-gray-800 mb-6">
+              댓글 {postComments.reduce((total, comment) => total + 1 + comment.replies.length, 0)}개
+            </h3>
+            
+            <div className="space-y-6">
+              {postComments.map((comment) => (
+                <div key={comment.id} className="space-y-4">
+                  {/* 주 댓글 */}
+                  <div className="flex space-x-4">
+                    <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                      <User className="w-5 h-5 text-gray-500" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="bg-gray-50 rounded-lg p-4">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="font-medium text-gray-800">{comment.author}</span>
+                          <span className="text-sm text-gray-500">{comment.date}</span>
+                        </div>
+                        <p className="text-gray-700">{comment.content}</p>
+                      </div>
+                      <Button variant="ghost" size="sm" className="mt-2 text-gray-500 hover:text-gray-700">
+                        <Reply className="w-4 h-4 mr-1" />
+                        답글
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* 대댓글들 */}
+                  {comment.replies.map((reply) => (
+                    <div key={reply.id} className="ml-14 flex space-x-4">
+                      <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                        <User className="w-4 h-4 text-gray-500" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="bg-gray-50 rounded-lg p-4">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="font-medium text-gray-800">{reply.author}</span>
+                            <span className="text-sm text-gray-500">{reply.date}</span>
+                          </div>
+                          <p className="text-gray-700">{reply.content}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            {/* 댓글 입력 */}
+            <div className="mt-8 pt-6 border-t border-gray-100">
+              <div className="flex space-x-4">
+                <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                  <User className="w-5 h-5 text-gray-500" />
+                </div>
+                <div className="flex-1">
+                  <textarea
+                    placeholder="댓글을 작성해주세요..."
+                    className="w-full p-4 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    rows={3}
+                  />
+                  <div className="flex justify-end mt-3">
+                    <Button className="bg-blue-500 hover:bg-blue-600 text-white">
+                      댓글 작성
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
