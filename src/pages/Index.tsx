@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 
 const Index = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [userName, setUserName] = useState('김철수');
 
   // Mock data for abandoned animals with images
