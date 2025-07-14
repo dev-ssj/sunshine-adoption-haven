@@ -14,6 +14,9 @@ import AdoptionReviewDetail from "./pages/AdoptionReviewDetail";
 import Shelters from "./pages/Shelters";
 import ShelterDetail from "./pages/ShelterDetail";
 import MyPage from "./pages/MyPage";
+import MyPosts from "./pages/MyPosts";
+import MyLikedPosts from "./pages/MyLikedPosts";
+import MyFavoriteAdoptions from "./pages/MyFavoriteAdoptions";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +38,9 @@ const App = () => (
           <Route path="/shelters" element={<Shelters />} />
           <Route path="/shelter/:id" element={<ShelterDetail />} />
           <Route path="/mypage" element={<MyPage />} />
+          <Route path="/my-posts" element={<MyPosts />} />
+          <Route path="/my-liked-posts" element={<MyLikedPosts />} />
+          <Route path="/my-favorite-adoptions" element={<MyFavoriteAdoptions />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

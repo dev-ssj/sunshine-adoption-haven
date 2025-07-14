@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   User, 
   FileText, 
@@ -11,6 +12,7 @@ import AppHeader from '@/components/AppHeader';
 import Footer from '@/components/Footer';
 
 const MyPage = () => {
+  const navigate = useNavigate();
   // 임시 로그인 상태 - 실제로는 전역 상태 관리나 props로 받아야 함
   const isLoggedIn = true;
   const userName = '김철수';
@@ -59,8 +61,22 @@ const MyPage = () => {
   ];
 
   const handleMenuClick = (menuId: string) => {
-    console.log(`클릭된 메뉴: ${menuId}`);
-    // 실제로는 각 메뉴에 맞는 페이지로 라우팅
+    switch (menuId) {
+      case 'my-posts':
+        navigate('/my-posts');
+        break;
+      case 'liked-posts':
+        navigate('/my-liked-posts');
+        break;
+      case 'favorite-adoptions':
+        navigate('/my-favorite-adoptions');
+        break;
+      case 'edit-profile':
+      case 'adoption-applications':
+      default:
+        console.log(`${menuId} 페이지는 아직 구현되지 않았습니다.`);
+        break;
+    }
   };
 
   return (
