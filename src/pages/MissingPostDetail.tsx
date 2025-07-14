@@ -117,7 +117,7 @@ const MissingPostDetail = () => {
                 ) : (
                   <Carousel className="w-full">
                     <CarouselContent className="-ml-2 md:-ml-4">
-                      {images.slice(0, 3).map((image, index) => (
+                      {images.map((image, index) => (
                         <CarouselItem key={index} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                           <div className="rounded-xl overflow-hidden shadow-md">
                             <img
