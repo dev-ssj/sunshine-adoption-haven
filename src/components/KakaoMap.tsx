@@ -17,26 +17,8 @@ const KakaoMap: React.FC<KakaoMapProps> = ({ latitude, longitude, address, name 
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const loadKakaoMap = () => {
-      if (!window.kakao || !window.kakao.maps) {
-        const script = document.createElement('script');
-        script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=b2adfe5a3da5b3d7cf9958f2688c5126&autoload=false`;
-        script.async = true;
-        
-        script.onload = () => {
-          window.kakao.maps.load(() => {
-            initializeMap();
-          });
-        };
-        
-        document.head.appendChild(script);
-      } else {
-        initializeMap();
-      }
-    };
-
     const initializeMap = () => {
-      if (!mapRef.current || !window.kakao) return;
+      if (!mapRef.current) return;
 
       const mapOption = {
         center: new window.kakao.maps.LatLng(latitude, longitude),
@@ -77,7 +59,42 @@ const KakaoMap: React.FC<KakaoMapProps> = ({ latitude, longitude, address, name 
       map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
     };
 
-    loadKakaoMap();
+    const loadKakaoMap = () => {
+      // 이미 스크립트가 로드되어 있는지 확인
+      const existingScript = document.querySelector('script[src*="dapi.kakao.com"]');
+      
+      if (window.kakao && window.kakao.maps) {
+        // 이미 로드됨
+        initializeMap();
+      } else if (existingScript) {
+        // 스크립트는 있지만 아직 로드되지 않음
+        existingScript.addEventListener('load', () => {
+          window.kakao.maps.load(initializeMap);
+        });
+      } else {
+        // 스크립트 추가
+        const script = document.createElement('script');
+        script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=b2adfe5a3da5b3d7cf9958f2688c5126&autoload=false`;
+        script.async = true;
+        
+        script.onload = () => {
+          window.kakao.maps.load(initializeMap);
+        };
+        
+        script.onerror = () => {
+          console.error('카카오맵 스크립트 로딩 실패');
+        };
+        
+        document.head.appendChild(script);
+      }
+    };
+
+    // 컴포넌트 마운트 후 약간의 지연을 두고 실행
+    const timer = setTimeout(loadKakaoMap, 100);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [latitude, longitude, address, name]);
 
   return (
