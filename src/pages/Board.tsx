@@ -9,6 +9,9 @@ import { allPosts } from '@/data/mockPosts';
 
 const Board = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [userName, setUserName] = useState('김철수');
+  
   // 나중에repetedPosts 지워주세요
   const repeatedPosts = Array(5).fill(allPosts).flat();
   const {
@@ -31,7 +34,12 @@ const Board = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <AppHeader onLoginClick={handleLoginClick} />
+      <AppHeader 
+        onLoginClick={handleLoginClick}
+        isLoggedIn={isLoggedIn}
+        userName={userName}
+        onLogout={() => setIsLoggedIn(false)}
+      />
       
       <div className="container mx-auto px-4 py-8">
         <BoardTabs
