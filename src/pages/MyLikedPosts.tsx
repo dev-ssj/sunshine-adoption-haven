@@ -86,6 +86,13 @@ const MyLikedPosts = () => {
               마음에 드는 게시글에 좋아요를 눌러보세요!
             </p>
           </div>
+        ) : currentPosts.length === 0 ? (
+          <div className="text-center py-16">
+            <div className="text-6xl mb-4">🔍</div>
+            <h3 className="text-xl font-semibold text-gray-600 mb-2">
+              해당 페이지에 표시할 게시글이 없습니다
+            </h3>
+          </div>
         ) : (
           <>
             {/* 좋아요한 게시글 목록 */}

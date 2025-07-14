@@ -61,6 +61,13 @@ const MyFavoriteAdoptions = () => {
               마음에 드는 아이를 찜해보세요!
             </p>
           </div>
+        ) : currentAnimals.length === 0 ? (
+          <div className="text-center py-16">
+            <div className="text-6xl mb-4">🔍</div>
+            <h3 className="text-xl font-semibold text-gray-600 mb-2">
+              해당 페이지에 표시할 공고가 없습니다
+            </h3>
+          </div>
         ) : (
           <>
             {/* 찜한 입양 공고 목록 */}
