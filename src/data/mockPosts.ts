@@ -108,8 +108,14 @@ export const allPosts = [
   {
     id: '3',
     title: '실종된 강아지를 찾습니다',
-    content: '12월 28일 오후 2시경 서울 강남구 역삼동에서 실종되었습니다.',
+    content: '12월 28일 오후 2시경 서울 강남구 역삼동에서 실종되었습니다. 목걸이에 이름표가 달려있고, 평소에 사람을 좋아해서 다가가도 도망가지 않습니다. 발견하시면 꼭 연락 부탁드립니다.',
     imageUrl: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    ],
     author: '박민수',
     date: '2024-01-13',
     category: 'missing',
@@ -149,8 +155,15 @@ export const allPosts = [
   {
     id: '6',
     title: '고양이 목격 정보',
-    content: '어제 저녁 홍대 근처에서 목격했습니다. 주인을 찾고 있는 것 같았어요.',
+    content: '어제 저녁 홍대 근처에서 목격했습니다. 주인을 찾고 있는 것 같았어요. 사람을 경계하지 않고 다가왔습니다. 목걸이는 없었지만 건강해 보였어요.',
     imageUrl: 'https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1548247416-ec66f4900b2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    ],
     author: '한상우',
     date: '2024-01-10',
     category: 'missing',
