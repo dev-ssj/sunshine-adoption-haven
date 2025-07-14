@@ -9,6 +9,7 @@ import { allPosts } from '@/data/mockPosts';
 
 const Board = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  // 나중에repetedPosts 지워주세요
   const repeatedPosts = Array(5).fill(allPosts).flat();
   const {
     activeTab,
@@ -20,7 +21,7 @@ const Board = () => {
     handleSearchChange,
     setCurrentPage,
   } = useBoardFilter({
-  posts: repeatedPosts,
+  posts: repeatedPosts, //repeatePosts 대신에 appPosts 적으세요
     postsPerPage: 12,
   });
 
