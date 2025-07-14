@@ -17,46 +17,67 @@ const KakaoMap: React.FC<KakaoMapProps> = ({ latitude, longitude, address, name 
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    console.log('KakaoMap 컴포넌트 마운트됨:', { latitude, longitude, name });
+
     const initializeMap = () => {
-      if (!mapRef.current) return;
+      console.log('지도 초기화 시작');
+      if (!mapRef.current) {
+        console.error('mapRef.current가 없습니다');
+        return;
+      }
 
-      const mapOption = {
-        center: new window.kakao.maps.LatLng(latitude, longitude),
-        level: 3
-      };
+      if (!window.kakao || !window.kakao.maps) {
+        console.error('카카오맵 API가 로드되지 않았습니다');
+        return;
+      }
 
-      const map = new window.kakao.maps.Map(mapRef.current, mapOption);
+      console.log('지도 생성 중...');
+      
+      try {
+        const mapOption = {
+          center: new window.kakao.maps.LatLng(latitude, longitude),
+          level: 3
+        };
 
-      // 마커 생성
-      const markerPosition = new window.kakao.maps.LatLng(latitude, longitude);
-      const marker = new window.kakao.maps.Marker({
-        position: markerPosition
-      });
+        const map = new window.kakao.maps.Map(mapRef.current, mapOption);
+        console.log('지도 생성 완료');
 
-      marker.setMap(map);
+        // 마커 생성
+        const markerPosition = new window.kakao.maps.LatLng(latitude, longitude);
+        const marker = new window.kakao.maps.Marker({
+          position: markerPosition
+        });
 
-      // 인포윈도우 생성
-      const infowindow = new window.kakao.maps.InfoWindow({
-        content: `
-          <div style="padding:10px; min-width:200px;">
-            <div style="font-weight:bold; margin-bottom:5px;">${name}</div>
-            <div style="font-size:12px; color:#666;">${address}</div>
-          </div>
-        `
-      });
+        marker.setMap(map);
+        console.log('마커 생성 완료');
 
-      // 마커 클릭 시 인포윈도우 표시
-      window.kakao.maps.event.addListener(marker, 'click', () => {
-        infowindow.open(map, marker);
-      });
+        // 인포윈도우 생성
+        const infowindow = new window.kakao.maps.InfoWindow({
+          content: `
+            <div style="padding:10px; min-width:200px;">
+              <div style="font-weight:bold; margin-bottom:5px;">${name}</div>
+              <div style="font-size:12px; color:#666;">${address}</div>
+            </div>
+          `
+        });
 
-      // 지도 타입 컨트롤 추가
-      const mapTypeControl = new window.kakao.maps.MapTypeControl();
-      map.addControl(mapTypeControl, window.kakao.maps.ControlPosition.TOPRIGHT);
+        // 마커 클릭 시 인포윈도우 표시
+        window.kakao.maps.event.addListener(marker, 'click', () => {
+          infowindow.open(map, marker);
+        });
 
-      // 줌 컨트롤 추가
-      const zoomControl = new window.kakao.maps.ZoomControl();
-      map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
+        // 지도 타입 컨트롤 추가
+        const mapTypeControl = new window.kakao.maps.MapTypeControl();
+        map.addControl(mapTypeControl, window.kakao.maps.ControlPosition.TOPRIGHT);
+
+        // 줌 컨트롤 추가
+        const zoomControl = new window.kakao.maps.ZoomControl();
+        map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
+        
+        console.log('지도 초기화 완료');
+      } catch (error) {
+        console.error('지도 초기화 중 오류:', error);
+      }
     };
 
     const loadKakaoMap = () => {
