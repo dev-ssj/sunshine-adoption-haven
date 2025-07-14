@@ -30,8 +30,11 @@ const BoardCard = ({ post }: BoardCardProps) => {
   const handleCardClick = () => {
     if (post.category === 'sns') {
       navigate(`/sns-post/${post.id}`);
+    } else if (post.category === 'adoption') {
+      navigate(`/adoption-review/${post.id}`);
+    } else if (post.category === 'missing') {
+      navigate(`/missing-post/${post.id}`);
     } else {
-      // 다른 카테고리의 경우 일반 상세 페이지로 이동 (추후 구현)
       console.log('Navigate to general post detail:', post.id);
     }
   };

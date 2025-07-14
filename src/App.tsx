@@ -10,6 +10,7 @@ import CreatePost from "./pages/CreatePost";
 import CreateSNSPost from "./pages/CreateSNSPost";
 import CreateMissingPost from "./pages/CreateMissingPost";
 import SNSPostDetail from "./pages/SNSPostDetail";
+import AdoptionReviewDetail from "./pages/AdoptionReviewDetail";
 import Shelters from "./pages/Shelters";
 import ShelterDetail from "./pages/ShelterDetail";
 import NotFound from "./pages/NotFound";
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/create-sns-post" element={<CreateSNSPost />} />
           <Route path="/create-missing-post" element={<CreateMissingPost />} />
           <Route path="/sns-post/:id" element={<SNSPostDetail />} />
+          <Route path="/adoption-review/:id" element={<AdoptionReviewDetail />} />
           <Route path="/shelters" element={<Shelters />} />
           <Route path="/shelter/:id" element={<ShelterDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
